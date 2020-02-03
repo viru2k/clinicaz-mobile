@@ -1,0 +1,14 @@
+{
+  "name": "clinicaz-mobile",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "22f476fd",
+  "proxies": [
+    {
+      "path": "/api/",
+      "proxyUrl": "http://example.com/api"
+    }
+  ]
+}

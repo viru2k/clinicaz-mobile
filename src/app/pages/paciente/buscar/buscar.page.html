@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">buscar paciente</ion-title>
+    <ion-buttons slot="end" (click)="closeModal()">
+      <ion-icon name="close" style="zoom:2.0;"></ion-icon>
+    </ion-buttons> 
+  </ion-toolbar>
+</ion-header>
+<div class="ion-text-center ion-padding ion-padding-bottom">
+  <!-- Crescent -->
+  <ion-spinner name="crescent" color="primary" *ngIf="loading"></ion-spinner>
+</div>
+<ion-content>
+  <ion-item>
+    <ion-label position="floating" class="padding-bottom">Buscar paciente</ion-label>
+    <ion-input [(ngModel)]="textoBusqueda" ></ion-input>
+  </ion-item>
+  <ion-radio-group [(ngModel)]="busqueda">
+    <ion-item>
+      <ion-label>Apellido</ion-label>
+      <ion-radio slot="start" value="paciente.apellido"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>DNI</ion-label>
+      <ion-radio slot="start" value="paciente.dni" checked></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+  <ion-button expand="block" (click)="buscar()">Buscar</ion-button>
+  <div class="ion-padding-top ion-text-center"> 
+    <ion-label position="floating" class="ion-margin"  >Listado de pacientes</ion-label>
+  </div>
+  
+  <ion-list *ngFor="let col of elementos" >
+    <div class="card-agenda ion-text-center" >
+      <div (click)="onRowSelect(col)">
+      <div ><ion-label>Apellido: {{col.apellido}}</ion-label></div>
+      <div><ion-label>Nombre:{{col.nombre}}</ion-label> </div>
+      <div><ion-label>DNI: {{col.dni}}</ion-label> </div>
+      <div><ion-label>Obra social: {{col.obra_social_nombre}}</ion-label> </div>
+      </div>
+      
+      <ion-button  color="secondary" 
+      expand="block"(click)="editarPaciente(col)">Editar paciente</ion-button>
+    </div>
+
+  
+   
+  </ion-list>
+</ion-content>

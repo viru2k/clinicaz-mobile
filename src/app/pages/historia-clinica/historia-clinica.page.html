@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-title >Historia clínica</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab vertical="top" horizontal="end" slot="fixed" edge  *ngIf="this.paciente_id" (click)="agregarHistoria()">
+    <ion-fab-button color="danger">  
+      <ion-icon name="add" ></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab vertical="top" horizontal="start" slot="fixed"  (click)="openModal()">
+    <ion-fab-button color="primary">
+      <ion-icon name="search"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <div class="ion-text-center ion-padding ion-padding-bottom">
+    <!-- Crescent -->
+    <ion-spinner name="crescent" color="primary" *ngIf="loading"></ion-spinner>
+  </div>
+
+
+  <ion-card class="card-agenda" *ngFor="let col of elementos"  >
+
+  
+    <ion-card-header >
+    
+     
+      <ion-card-subtitle>
+       <label class="text-info">Fecha :</label>    {{col.FECHA | date: 'dd/MM/yyyy'}}
+      </ion-card-subtitle>
+      
+      <ion-card-subtitle  *ngIf="col.AF">
+        <label class="text-info">Antecedentes familiares :</label>   {{col.AF}}      
+      </ion-card-subtitle>
+      <ion-card-subtitle *ngIf="col.APP">
+        <label class="text-info">Antecedentes patológicos personales :</label>  {{col.APP}}      
+      </ion-card-subtitle>  
+      <ion-card-subtitle  *ngIf="col.MC">
+        <label class="text-info">Motivo consulta :</label>   {{col.MC}}      
+      </ion-card-subtitle>  
+    </ion-card-header>
+  
+   
+    <ion-card-content>
+      <ion-card-subtitle  *ngIf="col.OBSERVACION">
+        <label class="text-info">Observación :</label>    {{col.OBSERVACION}}
+      </ion-card-subtitle>
+      <ion-card-subtitle  *ngIf="col.SINTOMAS">
+        <label class="text-info">Sintomas :</label>    {{col.SINTOMAS}}
+      </ion-card-subtitle>
+      <ion-card-subtitle *ngIf="col.MEDICACION">
+        <label class="text-info"> Medicación :</label>    {{col.MEDICACION}} 
+      </ion-card-subtitle>
+      <ion-card-subtitle *ngIf="col.DIAGNOSTICO">
+        <label class="text-info">Diagnostico :</label>    {{col.DIAGNOSTICO}} 
+      </ion-card-subtitle>
+      <ion-card-subtitle  *ngIf="col.TRATAMIENTO">
+        <label class="text-info">Tratamiento :</label>    {{col.TRATAMIENTO}}
+      </ion-card-subtitle >
+      <ion-card-subtitle *ngIf="col.estudio_id">
+        <label class="text-info">Fecha :</label>    Estudios 
+      <ion-button expand="block">Ver estudio</ion-button>
+    </ion-card-subtitle>
+      </ion-card-content>
+ 
+  </ion-card>
+</ion-content>

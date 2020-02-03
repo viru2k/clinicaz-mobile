@@ -1,0 +1,72 @@
+<ion-header>
+ 
+</ion-header>
+
+<ion-content>
+       
+  <div class="wrapper fadeInDown">
+  
+    <div style="background-color: #666666;">
+            <div class="limiter">
+                    <div class="container-login100">
+                            <div class="wrap-login100"> 
+                                    <form [formGroup]="loginForm"  class="login100-form validate-form" (ngSubmit)="onSubmit()">
+                                            <img src="assets/images/logo_clinicaz.png" width="90%" height="75" class="mt-5 mb-5 center-img"> 
+                                            <span class="login100-form-title p-b-43 texto-monserrat">
+                                                    Bienvenido
+                                            </span>
+                                            
+                                            
+                                            <div class="wrap-input100 validate-input" data-validate = "Usuario válido es requerido">
+                                                    <input class="input100" type="text" name="email" formControlName="username"   autofocus>
+                                                    <span  class="focus-input100" ></span>
+                                                    <span   class="label-input100" >Usuario</span>
+                                                    
+                                            </div>
+                                            
+                                            
+                                            <div class="wrap-input100 validate-input" data-validate="Contraseña es requerida">
+                                                    <input class="input100" type="password" name="pass" formControlName="password" >
+                                                    <span class="focus-input100"></span>
+                                                    <span class="label-input100" >Contraseña</span>
+                                            </div>
+                                          
+   
+                                            <div class=" m-2 ion-text-center ion-margin-bottom" *ngIf="loading" >
+                                                  <div class="d-flex justify-content-center">
+                                                    <ion-spinner name="crescent" color="primary" ></ion-spinner>
+                                                                                                    
+                                                  </div>
+                                                  <div class="d-flex justify-content-center"> 
+
+                                                    <label class="texto-monserrat-alternat">{{loading_mensaje}}</label>
+                                                  </div>
+                                                   
+                                                    
+                                            </div>
+                                            <div class=" m-2" *ngIf="loading_error" >
+                                            <div class="d-flex justify-content-center"> 
+                                                            <span class="badge badge-warning texto-monserrat-alternat p-2">Usuario o contraseña incorrectos</span>
+                                                            <label class="texto-monserrat-alternat text-danger"></label>
+                                                          </div>
+                                            </div>
+
+                                            <div class="container-login100-form-btn">
+                                                    <button class="login100-form-btn texto-monserrat">
+                                                            Ingresar
+                                                    </button>
+                                                    
+                                            </div>
+                                           
+                                            
+                                    </form>
+                                   
+                                   
+                                 
+                            </div>
+                    </div>
+            </div>
+    </div>
+    </div>
+  
+</ion-content>

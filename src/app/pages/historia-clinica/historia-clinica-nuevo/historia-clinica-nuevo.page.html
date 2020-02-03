@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar color="primary" >
+    <ion-title>Nueva historia clínica</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="/tabs/tabs/tabagenda" >        
+      </ion-back-button>
+    </ion-buttons> 
+    
+
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+<div class="card-agenda" *ngIf="elemento" ion-margin>
+  <div>
+    <ion-label>
+      Paciente :
+    </ion-label>
+    <ion-label>
+      {{elemento.paciente_nombre}}
+    </ion-label>
+  </div>
+  <div>
+    <ion-label>
+      DNI :
+    </ion-label>
+    <ion-label>
+      {{elemento.dni}} 
+    </ion-label>
+  </div>
+  <div>
+    <ion-label>
+      Obra social :
+    </ion-label>
+    <ion-label>
+      {{elemento.obra_social_nombre}} 
+    </ion-label>
+  </div>
+</div>
+  <form [formGroup]="dataForm" padding-right>
+    <ion-button 
+    color="primary" 
+    expand="block" 
+    [disabled]="![dataForm.valid]" 
+    (click)="loginForm()">
+    <ion-icon name="checkmark-circle-outline"></ion-icon>
+    Guardar</ion-button>
+    <ion-item>
+      <ion-label position="floating" ion-padding>Motivo de consulta</ion-label>
+      <ion-textarea type="text" formControlName="MC" rows="5" cols="20"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Antecedentes patológicos personales </ion-label>
+      <ion-textarea type="text" formControlName="APP" rows="5" cols="20"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Antecedentes familiares </ion-label>
+      <ion-textarea type="text" formControlName="AF" rows="5" cols="20"></ion-textarea>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label position="floating">Observacion </ion-label>
+      <ion-textarea type="text" formControlName="OBSERVACION" rows="4" cols="20"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Sintomas </ion-label>
+      <ion-textarea type="text" formControlName="SINTOMAS" rows="4" cols="20"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Medicación </ion-label>
+      <ion-textarea type="text" formControlName="MEDICACION" rows="4" cols="20"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Diagnostico </ion-label>
+      <ion-textarea type="text" formControlName="DIAGNOSTICO" rows="4" cols="20"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Tratamiento </ion-label>
+      <ion-textarea type="text" formControlName="TRATAMIENTO" rows="4" cols="20"></ion-textarea>
+    </ion-item>
+
+
+      <ion-button expand="block" color="tertiary">
+        <ion-icon name="attach"></ion-icon>
+        Adjuntar archivo</ion-button> 
+
+   
+</form>
+</ion-content>

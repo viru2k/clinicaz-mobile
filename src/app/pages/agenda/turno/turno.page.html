@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar color="success" >
+    <ion-title>Turno</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="/" >        
+      </ion-back-button>
+    </ion-buttons> 
+    
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab vertical="top" horizontal="end" slot="fixed" edge    >
+    <ion-fab-button color="tertiary" (click)="agregarPaciente()">  
+      <ion-icon name="person-add" ></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab  vertical="bottom" horizontal="end" slot="fixed" (click)="openModal()">
+    <ion-fab-button>
+      <ion-icon name="search"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-content fullscreen class="ion-padding" >
+    <div class="card-agenda">
+      <form  [formGroup]="DateForm">
+        <label class="texto-montserrat mr-2">Fecha : </label>
+            <p-calendar formControlName="fechaHoy"  (onSelect)="actualizarFecha($event)" tabindex="0"   dateFormat="dd/mm/yy " [locale]="es"  appendTo="body" [readonlyInput]="true" autofocus >              
+            </p-calendar>
+      </form>
+    </div>
+   
+    <div class="ion-text-center ion-padding ion-padding-bottom">
+      <!-- Crescent -->
+      <ion-spinner name="crescent" color="primary" *ngIf="loading"></ion-spinner>
+    </div>
+    <ion-card class="card-agenda" *ngIf="formPaciente.value.apellido !==''"  >
+      
+      <ion-card-header >
+        
+        <ion-card-title  class="ion-text-center">Paciente</ion-card-title>
+        <ion-card-subtitle>Apellido: {{formPaciente.value.apellido}}</ion-card-subtitle>
+        <ion-card-subtitle>Nombre: {{formPaciente.value.nombre}}</ion-card-subtitle>
+        <ion-card-subtitle>Documento: {{formPaciente.value.dni}}</ion-card-subtitle>
+        <ion-card-subtitle>Obra social: {{formPaciente.value.obra_social_nombre}}</ion-card-subtitle>
+        
+        <ion-button expand="block" (click)="quitarPaciente()" class="warning">Quitar de la busqueda  </ion-button>
+      </ion-card-header>
+    </ion-card>
+
+    
+         
+    
+
+    
+    <ion-card class="card-agenda"  *ngFor="let col of agendaTurno "  >
+      <ion-fab vertical="top" horizontal="end"   >
+        <ion-fab-button color="warning1"  (click)="generarTurno(col)"  [disabled]="!boton_habilitado">  
+          <ion-icon name="checkmark-circle-outline" ></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+      <ion-card-header >
+       
+        <ion-card-subtitle>
+            Turno : {{col.hora_desde}}         Dia :   {{col.dia_nombre}}
+          </ion-card-subtitle>
+        <ion-card-subtitle>
+       
+        </ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+  </ion-content>
+</ion-content>

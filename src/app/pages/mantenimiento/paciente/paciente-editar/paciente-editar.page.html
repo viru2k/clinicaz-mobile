@@ -1,0 +1,122 @@
+<ion-header>
+  <ion-toolbar color="primary" >
+    <ion-title>Editar paciente</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="/tabs/tabs/tabturno" >        
+      </ion-back-button>
+    </ion-buttons> 
+  </ion-toolbar>
+ 
+</ion-header>
+
+<ion-content>
+  
+  <div class="ion-text-center ion-padding ion-padding-bottom">
+    <!-- Crescent -->
+    <ion-spinner name="crescent" color="primary" *ngIf="loading"></ion-spinner>
+  </div>
+  <ion-fab vertical="top" horizontal="end" slot="fixed" edge  (click)="loginForm()" >
+    <ion-fab-button color="danger" [disabled]="!updateDataForm.valid" >  
+      <ion-icon name="checkmark-circle-outline" ></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <form [formGroup]="updateDataForm" padding-right>
+   
+   
+    <ion-item>
+      <ion-label position="floating" ion-padding>Apellido</ion-label>
+      <ion-input type="text" formControlName="apellido" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nombre </ion-label>
+      <ion-input type="text" formControlName="nombre" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">DNI </ion-label>
+      <ion-input type="text" formControlName="dni" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Sexo</ion-label>
+      <ion-radio-group formControlName="sexo">
+        <ion-item>
+          <ion-label>Masculino</ion-label>
+          <ion-radio slot="start" value="M" checked></ion-radio>
+        </ion-item>
+    
+        <ion-item class="ion-margin-bottom">
+          <ion-label>Femenino</ion-label>
+          <ion-radio slot="start"  value="F" ></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-item>
+ 
+
+    <ion-item>
+      <ion-label position="floating">Domicilio </ion-label>
+      <ion-input type="text" formControlName="domicilio" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Ciudad </ion-label>
+      <ion-input type="text" formControlName="ciudad" ></ion-input>
+    </ion-item>
+    <div class="ion-margin-top ion-margin-start">
+      <ion-label position="floating" >Nacimiento </ion-label>
+           <p-calendar formControlName="fecha_nacimiento" [locale]="es" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2100" appendTo="body" [readonlyInput]="true" ></p-calendar>
+        
+       </div>
+          
+         <ion-item>
+          
+          <ion-label>{{edad}} años</ion-label>
+         </ion-item>
+    <ion-item>
+     
+      <ion-label>{{updateDataForm.value.obra_social_nombre}}</ion-label>
+     
+    </ion-item>
+    <ion-button expand="block"  color="tertiary" > <ion-icon name="search" ></ion-icon> Obra social</ion-button>
+    <ion-item>
+      <ion-label position="floating">Número afiliado / ID </ion-label>
+      <ion-input type="text" formControlName="numero_afiliado" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Barra </ion-label>
+      <ion-input type="text" formControlName="barra_afiliado" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Plan </ion-label>
+      <ion-input type="text" formControlName="plan" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Teléfono celular </ion-label>
+      <ion-input type="text" formControlName="telefono_cel" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Email </ion-label>
+      <ion-input type="text" formControlName="email" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Whatsapp</ion-label>
+      <ion-radio-group formControlName="tiene_whatsapp">
+        <ion-item>
+          <ion-label>Si</ion-label>
+          <ion-radio slot="start"  value="true" checked></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>No</ion-label>
+          <ion-radio slot="start"  value="false" ></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-item>
+
+     
+
+   
+</form>
+</ion-content>

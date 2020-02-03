@@ -1,0 +1,83 @@
+<ion-header translucent >
+  <ion-toolbar color="success">
+    <ion-title>Agenda</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab vertical="top" horizontal="end" slot="fixed" edge  (click)="darTurno()" >
+    <ion-fab-button color="danger">  
+      <ion-icon name="add" ></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-content fullscreen class="ion-padding" >
+    <div class="card-agenda">
+      <form  [formGroup]="DateForm" >
+        <label class="texto-montserrat mr-2">Fecha : </label>
+          <p-calendar formControlName="fechaHoy"  (onSelect)="actualizarFecha($event)" tabindex="0"   dateFormat="dd/mm/yy " [locale]="es"  appendTo="body" [readonlyInput]="true" autofocus  >              
+          </p-calendar>
+    </form>
+    </div>
+  
+    <!--   <ion-datetime   placeholder="Buscar agenda" done-text="Confirmar" cancel-text="Cancelar" color="primary" [(ngModel)]="fechaHoy" 
+      [dayShortNames]="customDayShortNames" (ionChange)="updateMyDate($event)"
+    displayFormat="DD,MMM, YYYY"
+      monthShortNames="Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic">></ion-datetime> -->
+ 
+
+    <div class="ion-text-center ion-padding ion-padding-bottom">
+      <!-- Crescent -->
+      <ion-spinner name="crescent" color="primary" *ngIf="loading"></ion-spinner>
+    </div>
+
+    <!-- <div #dt class="  card-agenda  mb-4 mt-3 animated bounceInBottom slow "   *ngFor="let col of agendaTurno    " [ngClass]="colorRow(col.estado)" >
+
+    </div>
+ -->
+ 
+    <div *ngIf="!agendaTurno" class="ion-text-center">
+      <label   >
+        No hay turnos en esta fecha
+      </label>
+    </div>
+    <ion-card class="card-agenda"  *ngFor="let col of agendaTurno  " [ngClass]="colorRow(col.estado)"  (click)="presentActionSheet(col)" >
+      <a  href="https://api.whatsapp.com/send?l=es&phone='549{{col.telefono_cel}}'&text=Buen%20dia%20Le%20recordamos%20que%20el%20dia%20{{col.dia_nombre}}%20{{col.fecha_turno  | date: 'dd/MM'}}%20tiene%20un%20turno%20con%20el%20doctor%20{{col.nombreyapellido}}%20a%20las%20{{col.hora_desde}}&source=&data=" class="float my-hover navbar-font ion-text-right" target="_blank">
+        <ion-icon name="logo-whatsapp" style="zoom:2.0;" class="text-info"></ion-icon>
+      </a>
+    
+      <ion-card-header >
+      
+        <ion-card-subtitle>
+            Turno : {{col.hora_desde}}      
+          </ion-card-subtitle>
+        <ion-card-subtitle>
+          Fecha :   {{col.fecha_turno | date: 'dd/MM/yyyy'}}
+        </ion-card-subtitle>
+       
+      </ion-card-header>
+    
+     
+      <ion-card-content>
+        <ion-card-subtitle>
+          Nombre :  {{col.paciente_nombre}}</ion-card-subtitle>
+        <ion-card-subtitle>
+          Apellido :   {{col.paciente_apellido}} 
+        </ion-card-subtitle>
+        <ion-card-subtitle>
+          DNI : {{col.paciente_dni}} 
+        </ion-card-subtitle>
+        <ion-card-subtitle>
+          Obra social : {{col.paciente_obra_social_nombre}}
+        </ion-card-subtitle>
+        Estado :   {{col.estado}}
+        </ion-card-content>
+   
+    </ion-card>
+
+  </ion-content>
+
+ 
+
+
+
+</ion-content>
