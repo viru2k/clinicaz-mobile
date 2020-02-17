@@ -22,6 +22,7 @@ import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontaweso
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import {CalendarModule} from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {FileUploadModule} from 'primeng/fileupload';
 
 // ==============================================
 // CLASES PROPIAS
@@ -51,6 +52,7 @@ registerLocaleData(localeEsAR, 'es-Ar');
     BrowserModule, IonicModule.forRoot(), AppRoutingModule, SweetAlert2Module.forRoot(),
     FontAwesomeModule,
     BuscarPageModule,
+    FileUploadModule,
     HistoriaClinicaBuscarPageModule,
     PacienteBuscarPageModule,
     UsuarioDatosPageModule,

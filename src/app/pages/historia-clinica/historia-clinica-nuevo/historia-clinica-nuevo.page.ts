@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { MedicoService } from '../../../services/medico.service';
 import { HistoriaClinica } from '../../../models/historia-clinica.model';
+import { URL_ARCHIVO,calendarioIdioma } from './../../../config/config';
 import swal from 'sweetalert2';
 
 @Component({
@@ -16,6 +17,9 @@ export class HistoriaClinicaNuevoPage implements OnInit {
   elemento_temp:HistoriaClinica;
   elemento:HistoriaClinica;
   _fecha:string; 
+  uploadedFiles: any[] = [];
+  userData:any;
+public url:string  = URL_ARCHIVO;
 
   constructor( 
       private miServicio:MedicoService,
@@ -37,7 +41,7 @@ export class HistoriaClinicaNuevoPage implements OnInit {
    /* this._fecha = formatDate(new Date(), 'yyyy-MM-dd', 'en');
     console.log(this.config.data);  
     this.elemento_temp = this.config.data;*/
-   
+    this.userData = JSON.parse(localStorage.getItem('userData'));
     this.dataForm = new FormGroup({
 
       'edad': new FormControl(''),
@@ -84,11 +88,11 @@ export class HistoriaClinicaNuevoPage implements OnInit {
   }
 
   loginForm(){
-    let userData = JSON.parse(localStorage.getItem('userData'));
+    
     console.log(this.dataForm.value);
     this.elemento = this.dataForm.value;
     //this.dataForm.patchValue({PACIENTE: this.elemento_temp.PACIENTE});
-    this.dataForm.patchValue({medico_id: userData['id']});
+    this.dataForm.patchValue({medico_id: this.userData['id']});
     this.dataForm.patchValue({paciente_id: this.elemento_temp.paciente_id});
     this.dataForm.patchValue({MEDICONOM: this.elemento_temp.MEDICONOM});
     this.dataForm.patchValue({MEDICO: this.elemento_temp.MEDICO});
@@ -134,6 +138,27 @@ export class HistoriaClinicaNuevoPage implements OnInit {
     
   }
   
-  
+  onUpload(){
+    swal({
+      toast: false,
+      type: 'success',
+      title: 'Guardado',
+      text: 'Se guardo la historia clínica',
+      showConfirmButton: false,
+      timer: 2000
+    });
+    this.dataForm.reset();
+    this.router.navigate(['/tabs/tabs/tabagenda']);
+  }
+
+  onError(error){
+    swal({
+      toast: false,
+      type: 'warning',
+      title: 'El archivo no pudo subirse',
+      text: error,
+      showConfirmButton: true
+    });
+  }
 
 }

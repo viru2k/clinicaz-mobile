@@ -12,13 +12,13 @@
 
 <ion-content>
   <ion-fab vertical="top" horizontal="end" slot="fixed" edge    >
-    <ion-fab-button color="tertiary" (click)="agregarPaciente()">  
-      <ion-icon name="person-add" ></ion-icon>
+    <ion-fab-button color="tertiary"  (click)="openModal()">  
+      <ion-icon name="search" ></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  <ion-fab  vertical="bottom" horizontal="end" slot="fixed" (click)="openModal()">
+  <ion-fab  vertical="bottom" horizontal="end" slot="fixed" (click)="agregarPaciente()">
     <ion-fab-button>
-      <ion-icon name="search"></ion-icon>
+      <ion-icon name="person-add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
   <ion-content fullscreen class="ion-padding" >
