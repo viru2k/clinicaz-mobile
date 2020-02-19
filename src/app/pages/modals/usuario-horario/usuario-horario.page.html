@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="success" >
+    <ion-title>Configuracion de horarios</ion-title>
+
+        
+    <ion-buttons slot="end" (click)="closeModal()">
+      <ion-button>
+        <ion-icon name="close" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-text-center ion-padding ion-padding-bottom">
+    <!-- Crescent -->
+    <ion-spinner name="crescent" color="primary" *ngIf="loading"></ion-spinner>
+  </div>
+  <div  class="ion-text-center ion-padding">
+    <ion-label>Configurar Agenda dia y horarios</ion-label>
+    
+  </div>
+  <ion-item>
+ 
+    <ion-select   multiple="false" cancelText="Cancelar" okText="Confirmar dia" (ionChange)="diaSeleccionado($event)"  >
+      <ion-select-option *ngFor="let col of elementos" value="{{col.id}}" >{{col.dia_nombre}}</ion-select-option>
+      
+    </ion-select>
+  </ion-item>
+ 
+
+  <div  class="ion-text-center">
+    <ion-label>Dias de atención</ion-label>
+  </div>
+
+  <ion-list >
+    <ion-item-sliding> 
+       <ion-item *ngFor="let col of elementosHorario" >
+      <ion-label>De {{col.hora_desde_hasta}}</ion-label>
+      <ion-toggle color="primary"  checked="false"></ion-toggle>
+    </ion-item></ion-item-sliding>
+  <!--   value="calcularEstado({{col.es_habilitado}})" -->
+   
+  </ion-list>
+  
+
+</ion-content>
+
+<ion-footer>
+
+  <ion-button expand="block" color="primary" (click)="guardarAgenda()">guardar agenda</ion-button>
+</ion-footer>
+  

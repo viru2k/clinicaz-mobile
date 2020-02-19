@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="success" >
+    <ion-title>Configuracion de dias</ion-title>
+
+        
+    <ion-buttons slot="end" (click)="closeModal()">
+      <ion-button>
+        <ion-icon name="close" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-text-center ion-padding ion-padding-bottom">
+    <!-- Crescent -->
+    <ion-spinner name="crescent" color="primary" *ngIf="loading"></ion-spinner>
+  </div>
+  <div  class="ion-text-center ion-padding">
+    <ion-label>Configurar Agenda dia y horarios</ion-label>
+    
+  </div>
+  <div  class="ion-text-center ion-padding">
+    <ion-note color="primary">Desde aquí podras configurar los dias de atención y el periodo de cada turno</ion-note>
+  </div>
+
+  <div  class="ion-text-center">
+    <ion-label>Tiempo de atención</ion-label>
+  </div>
+  <ion-item>
+    <ion-range min="5" pin="true" max="60" step="5" snaps="true" ticks="true" color="primary" (ionChange)="guardarValor($event)">
+      <ion-label slot="start">-5</ion-label>
+      <ion-label slot="end">60</ion-label>
+    </ion-range>
+  </ion-item>
+  <ion-list>
+    <div  class="ion-text-center">
+      <ion-label>Dias de atención</ion-label>
+    </div>
+    
+  
+  <ion-item>
+ 
+    <ion-select   multiple="true" cancelText="Cancelar" okText="Guardar dias" (ionChange)="guardarDias($event)"  >
+      <ion-select-option *ngFor="let col of elementos" value="{{col.dia_nro}}" >{{col.dia_nombre}}</ion-select-option>
+      
+    </ion-select>
+  </ion-item>
+
+ <ion-button expand="block" color="primary" (click)="guardarAgenda()">guardar agenda</ion-button>
+  </ion-list>
+
+ 
+
+  
+
+</ion-content>
+
+
+  

@@ -126,6 +126,10 @@ export class HistoriaClinicaPage implements OnInit {
     console.log('entrando nuevamente a la pagina');
   }
 
+  ionViewDidEnter(){
+    console.log("ionViewDidEnter")
+}
+
   ionViewDidLeave(){
     console.log('entrando nuevamente');
   this.navCtrl.pop();

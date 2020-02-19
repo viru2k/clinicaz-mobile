@@ -81,8 +81,8 @@ public url:string  = URL_ARCHIVO;
       'estudio_id': new FormControl(''),
       'estudio_nombre': new FormControl(''), 
       'ESTUDIOS': new FormControl(''),
-      'MEDICACION': new FormControl('')
-
+      'MEDICACION': new FormControl(''), 
+      'url_estudio': new FormControl('')
       
       });
   }

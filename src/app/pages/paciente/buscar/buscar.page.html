@@ -11,21 +11,33 @@
   <ion-spinner name="crescent" color="primary" *ngIf="loading"></ion-spinner>
 </div>
 <ion-content>
-  <ion-item>
-    <ion-label position="floating" class="padding-bottom">Buscar paciente</ion-label>
-    <ion-input [(ngModel)]="textoBusqueda" ></ion-input>
-  </ion-item>
-  <ion-radio-group [(ngModel)]="busqueda">
-    <ion-item>
-      <ion-label>Apellido</ion-label>
-      <ion-radio slot="start" value="paciente.apellido"></ion-radio>
-    </ion-item>
 
-    <ion-item>
-      <ion-label>DNI</ion-label>
-      <ion-radio slot="start" value="paciente.dni" checked></ion-radio>
-    </ion-item>
-  </ion-radio-group>
+
+    
+    <div class="ion-padding">
+      <ion-label position="floating" class="padding-bottom">Dato del paciente</ion-label>
+    </div>
+  <ion-item>
+    <ion-input #myInput placeholder="Ingrese dni/apellido aquí" [(ngModel)]="textoBusqueda"  autofocus="true" (keyup.enter)="buscar()"  ></ion-input>
+  </ion-item>
+
+    <div class=" ion-text-center ion-padding-top" >
+      <ion-label position="floating" class="ion-margin"  >Buscar paciente por :</ion-label>
+    </div>
+   
+    <ion-radio-group [(ngModel)]="busqueda">
+      <ion-item>
+        <ion-label>Apellido</ion-label>
+        <ion-radio slot="start" value="paciente.apellido" checked></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>DNI</ion-label>
+        <ion-radio slot="start" value="paciente.dni" ></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+
+ 
   <ion-button expand="block" (click)="buscar()">Buscar</ion-button>
   <div class="ion-padding-top ion-text-center"> 
     <ion-label position="floating" class="ion-margin"  >Listado de pacientes</ion-label>
@@ -33,6 +45,8 @@
   
   <ion-list *ngFor="let col of elementos" >
     <div class="card-agenda ion-text-center" >
+      <ion-button  color="primary" 
+      expand="block" (click)="onRowSelect(col)">seleccionar</ion-button>
       <div (click)="onRowSelect(col)">
       <div ><ion-label>Apellido: {{col.apellido}}</ion-label></div>
       <div><ion-label>Nombre:{{col.nombre}}</ion-label> </div>

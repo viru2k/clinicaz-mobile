@@ -146,6 +146,7 @@ export class TurnoPage implements OnInit {
                       this.obra_social_nombre = this.dataReturned.obra_social_nombre;
                       this.dni =  this.dataReturned.dni;       
                       this.fecha_nacimiento =  this.dataReturned.fecha_nacimiento; 
+                      this.loadListTurno();
                  //     this.elemento.paciente_id = dataReturned.data.id;
                       // alert('Modal Sent Data :'+ dataReturned);
                     }

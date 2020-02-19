@@ -76,6 +76,14 @@ const routes: Routes = [
   {
     path: 'usuario',
     loadChildren: () => import('./pages/usuario/usuario.module').then( m => m.UsuarioPageModule)
+  },
+  {
+    path: 'usuario-agenda',
+    loadChildren: () => import('./pages/modals/usuario-agenda/usuario-agenda.module').then( m => m.UsuarioAgendaPageModule)
+  },
+  {
+    path: 'usuario-horario',
+    loadChildren: () => import('./pages/modals/usuario-horario/usuario-horario.module').then( m => m.UsuarioHorarioPageModule)
   }
 ];
 @NgModule({

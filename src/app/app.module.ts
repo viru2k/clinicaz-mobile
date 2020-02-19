@@ -14,26 +14,38 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS,HttpClientModule  } from '@angular/common/http';
 import { DatePipe ,registerLocaleData} from '@angular/common';
 
+import { ServiceWorkerModule } from '@angular/service-worker';
 
-// ==============================================
-// LIBRERIAS DE TERCEROS
-// ==============================================
+
+/* -------------------------------------------------------------------------- */
+/*                            LIBRERIAS DE TERCEROS                           */
+/* -------------------------------------------------------------------------- */
+
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import {CalendarModule} from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FileUploadModule} from 'primeng/fileupload';
 
-// ==============================================
-// CLASES PROPIAS
-// ==============================================
+/* -------------------------------------------------------------------------- */
+/*                               CLASES PROPIAS                               */
+/* -------------------------------------------------------------------------- */
 
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
+
+/* -------------------------------------------------------------------------- */
+/*                              VENTANAS MODALES                              */
+/* -------------------------------------------------------------------------- */
+
 import { BuscarPageModule } from './pages/paciente/buscar/buscar.module';
 import { HistoriaClinicaBuscarPageModule } from './pages/modals/historia-clinica-buscar/historia-clinica-buscar.module';
 import { PacienteBuscarPageModule } from './pages/modals/paciente-buscar/paciente-buscar.module';
 import { UsuarioDatosPageModule } from './pages/modals/usuario-datos/usuario-datos.module';
+import { UsuarioAgendaPageModule } from './pages/modals/usuario-agenda/usuario-agenda.module';
+import { UsuarioHorarioPageModule } from './pages/modals/usuario-horario/usuario-horario.module';
+
+
 import localeEsAR from '@angular/common/locales/es-AR';
 
 registerLocaleData(localeEsAR, 'es-Ar');
@@ -41,8 +53,10 @@ registerLocaleData(localeEsAR, 'es-Ar');
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [
- 
+  imports: [ 
+
+
+
 
   
     BrowserAnimationsModule,
@@ -56,6 +70,8 @@ registerLocaleData(localeEsAR, 'es-Ar');
     HistoriaClinicaBuscarPageModule,
     PacienteBuscarPageModule,
     UsuarioDatosPageModule,
+    UsuarioAgendaPageModule,
+    UsuarioHorarioPageModule,
     CalendarModule
   ],
 

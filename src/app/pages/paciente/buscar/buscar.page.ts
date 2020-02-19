@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 import swal from 'sweetalert2';
 import { PacienteService } from '../../../services/paciente.service';
@@ -20,23 +20,32 @@ export class BuscarPage implements OnInit {
   elemento:Paciente = null;
   elementos:Paciente[] = null;
   busquedaForm:FormGroup;
-  busqueda: string = 'paciente.dni';
+  busqueda: string = 'paciente.apellido';
   textoBusqueda:string = "";
+  @ViewChild('myInput',  {static: true}) myInput;
 
   constructor(private miServico:PacienteService,
     private modalController: ModalController,
     private navParams: NavParams,
-    private router:Router) { }
+    private router:Router) { 
+      
+    }
 
   
   ngOnInit() {
+    //ngAfterViewChecked
   }
 
   async closeModal() {
     const onClosedData: string = "Wrapped Up!";
     await this.modalController.dismiss(this.selectedItem);
   }
-
+  
+/* 
+  ngAfterViewChecked() {
+    this.myInput.setFocus()
+}
+ */
   buscar(){
     if((this.busqueda !=undefined)&&(this.busqueda.length >=3)){
     this.loadList();

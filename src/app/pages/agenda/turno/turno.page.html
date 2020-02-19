@@ -11,18 +11,18 @@
 </ion-header>
 
 <ion-content>
-  <ion-fab vertical="top" horizontal="end" slot="fixed" edge    >
-    <ion-fab-button color="tertiary"  (click)="openModal()">  
-      <ion-icon name="search" ></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+ 
   <ion-fab  vertical="bottom" horizontal="end" slot="fixed" (click)="agregarPaciente()">
     <ion-fab-button>
       <ion-icon name="person-add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
   <ion-content fullscreen class="ion-padding" >
+   
     <div class="card-agenda">
+      <div class="ion-padding-bottom">
+        <ion-button expand="block" (click)="openModal()">Buscar paciente</ion-button>
+      </div>
       <form  [formGroup]="DateForm">
         <label class="texto-montserrat mr-2">Fecha : </label>
             <p-calendar formControlName="fechaHoy"  (onSelect)="actualizarFecha($event)" tabindex="0"   dateFormat="dd/mm/yy " [locale]="es"  appendTo="body" [readonlyInput]="true" autofocus >              

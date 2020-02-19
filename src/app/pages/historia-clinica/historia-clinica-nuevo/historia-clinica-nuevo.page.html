@@ -10,7 +10,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-
+ 
 <div class="card-agenda" *ngIf="elemento" ion-margin>
   <div>
     <ion-label>
@@ -85,13 +85,13 @@
       <ion-textarea type="text" formControlName="TRATAMIENTO" rows="4" cols="20"></ion-textarea>
     </ion-item>
 
-    <ion-item *ngIf="ur_estudio">
+  <!--   <ion-item *ngIf="url_estudio">
       <ion-label position="floating">Estudio </ion-label>
-      <ion-textarea type="text" formControlName="TRATAMIENTO" rows="4" cols="20"></ion-textarea>
-    </ion-item>
+      <ion-textarea type="text" formControlName="url_estudio" rows="4" cols="20"></ion-textarea>
+    </ion-item> -->
 
 
-    <p-fileUpload name="images[]" url=" {{url}}api/multiuploads/estudios/{{this.userData['id']}}/{{this.elemento['paciente_id']}}" (onUpload)="onUpload($event)"
+    <p-fileUpload name="images[]" url=" {{url}}api/multiuploads/estudios/{{this.userData['id']}}/{{this.elemento['paciente_id']}}" (onUpload)="onUpload()"
       chooseLabel="Seleccionar archivo"  uploadLabel="Subir"	cancelLabel="Cancelar"
       multiple="multiple" accept="image/*" >
     </p-fileUpload>
